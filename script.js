@@ -1,9 +1,10 @@
 
 let leaver; computerScore = 0, humanScore = 0;
-const totalRounds = 5; // Anzahl der Runden
+const totalRounds = 3; 
 
-
+console.clear();
 console.log("%cRock Paper Scissor Game", "color:white; font-size: 2rem; font-weight: bolder; text-shadow: 2px 2px 2px black;background: grey;");
+console.log("Reload page to restart the game.");
 
 // randomly returns one of the following string values: “rock”, “paper” or “scissor”
 function getComputerChoice() {
@@ -62,13 +63,18 @@ for (let i = 1; i <= totalRounds; i++) {
 }
 
 // Final result
-console.log(`\n%cGame Over! Final Score - Computer: ${computerScore}  🆚  Human: ${humanScore}`, "color:orange; font-size: 1.4rem; font-weight: bold;");
-       if (computerScore > humanScore) {
+const gameOver = () => console.log(`\n%cGame Over! Final Score - Computer: ${computerScore}  🆚  Human: ${humanScore}`, "color:orange; font-size: 1.4rem; font-weight: bold;");
+
+// Final print
+if (leaver == true) {
+    console.log(`%c💡 Give it a shot – you might love it!`, "font-size:1rem; font-weight:bold;");
+} else if (computerScore > humanScore) {
+    gameOver();
     console.log("%c💻 Computer wins the game!", "color:red; font-size:1.5rem; font-weight:bold;");
 } else if (humanScore > computerScore) {
+    gameOver();
     console.log("%c🎉 Human wins the game!", "color:green; font-size:1.5rem; font-weight:bold;");
-} else if (leaver !== true) {
-    console.log("%c⚖️ It's a tie!", "color:blue; font-size:1.5rem; font-weight:bold;");
 } else {
-    console.log(`%c💡 Give it a shot – you might love it!`, "font-size:1rem; font-weight:bold;");
-}
+    gameOver();
+    console.log("%c⚖️ It's a tie!", "color:blue; font-size:1.5rem; font-weight:bold;");
+} 
